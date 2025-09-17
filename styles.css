@@ -1,0 +1,281 @@
+/* ===== RESET & BASE ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;              /* ingen horisontell scroll */
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Arial', sans-serif;
+    color: #111;
+}
+
+img, svg, video, canvas { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 22px 16px;
+    display: flex;
+    justify-content: center;   /* centrera innehållet */
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    letter-spacing: 0.05rem;
+
+}
+
+.logo { display: none; }     /* ingen rubrik/JB i toppen */
+
+.nav-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;   /* centrera länkarna */
+    flex-wrap: wrap;
+}
+
+.nav-links a { font-weight: 500; }
+.nav-links .btn { border-radius: 20px; font-weight: 600; }
+
+/* ===== HERO ===== */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    min-height: 95vh;
+    margin-top: 56px;                /* plats för fixed navbar */
+    background: #e5e5e5;
+    overflow: hidden;
+}
+
+.hero-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+}
+
+.hero-content { max-width: 520px; }
+.hero-content h1 {
+    font-family: 'Poppins','Quicksand',sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 .25rem 0;
+}
+.hero-content p {
+    font-family: 'Poppins','Quicksand',sans-serif;
+    font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+    font-weight: 500;
+}
+.mini-logo { font-weight: 700; font-size: 1.5rem; margin-bottom: 1rem; }
+.subtitle { font-size: 1rem; margin: 0; }
+.title { font-size: 2.5rem; margin: 0.5rem 0; }
+.role { font-size: 1rem; font-weight: 600; color: #777; margin-bottom: 1.5rem; }
+
+.social-links { display: flex; gap: 16px; margin-top: 12px; }
+.social-links .social {
+    width: 36px; height: 36px; display: inline-flex;
+    align-items: center; justify-content: center; border-radius: 4px;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.social-links .social:hover { transform: scale(1.1); }
+.social--linkedin img { width: 36px; height: 36px; object-fit: contain; }
+.social--mail { background: #007EBB; color: #fff; font-weight: 900; font-size: 26px; line-height: 1; }
+
+/* HERO RIGHT – sned kant med clip-path, säkert för iOS */
+.hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0;
+    background: linear-gradient(90deg, #666 0%, #535353 20%, #444 55%, #323232 100%);
+
+    /* sned vänsterkant */
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+}
+.hero-right img {
+    width: 280px;
+    height: 280px;
+    border-radius: 47%;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    max-width: 90vw;
+}
+
+/* Säkerställ att inget spiller ut (viktigt på iOS) */
+.hero { overflow: hidden; }
+
+
+/* ===== USING NOW ===== */
+.using-now {
+    background: linear-gradient(90deg, #f4f4f4 0%, #fff 30%, #fff 70%, #f4f4f4 100%);
+    padding: clamp(40px, 6vw, 80px) 0;
+    text-align: center;
+}
+.using-now__title,
+.using-now__subtitle {
+    margin: 0 0 clamp(20px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #0b0c0f;
+}
+.using-now__title { font-size: clamp(18px, 2.4vw, 28px); }
+.using-now__subtitle { font-size: clamp(16px, 2vw, 22px); margin-top: clamp(32px, 5vw, 48px); }
+
+/* ===== IKONER – alltid centrerade rader ===== */
+/* Byt grid → flex (behåller befintliga klasser) */
+.icons-wrap { width: min(1100px, 92vw); margin: 0 auto; }
+
+.icons-grid,
+.icons-grid--compact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;         /* centrera varje rad från mitten */
+    align-items: stretch;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Responsiv "tile"-bredd så rader bryts snyggt och centreras */
+.icons-grid > *,
+.icons-grid--compact > * {
+    flex: 0 1 clamp(120px, 18vw, 180px);
+    display: grid;
+    place-items: center;
+}
+
+.tool__item { display: grid; place-items: center; gap: 8px; text-align: center; padding: 10px; border-radius: 10px; transition: transform .2s ease, box-shadow .2s ease; }
+.tool__item:hover { transform: translateY(-3px); }
+.tool__item img { width: clamp(44px, 6vw, 72px); height: clamp(44px, 6vw, 72px); object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,.1)); }
+.tool__item figcaption { font-size: clamp(10px, 1.4vw, 13px); letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: #111; opacity: .9; }
+
+/* ===== ABOUT ===== */
+.about {
+    background: linear-gradient(90deg, #f4f4f4 0%, #fff 30%, #fff 70%, #f4f4f4 100%);
+    padding: 80px 20px;
+    text-align: center;
+}
+.about p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem; line-height: 1.6; letter-spacing: 0.2px;
+    max-width: 65ch; margin: 0 auto 1.5rem; color: #333;
+}
+.about .container { max-width: 800px; margin: auto; }
+
+/* ===== SPRÅK – samma centrering ===== */
+.languages-wrap { width: min(900px, 92vw); margin: 0 auto; }
+.languages-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;         /* centrera raderna */
+    align-items: stretch;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.languages-grid > * {
+    flex: 0 1 clamp(120px, 18vw, 180px);
+    display: grid;
+    place-items: center;
+}
+.lang__item img { width: clamp(36px, 4.5vw, 54px); height: clamp(36px, 4.5vw, 54px); object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.15)); }
+.lang__item figcaption { font-size: clamp(10px, 1.2vw, 12px); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: #111; opacity: .85; margin-top: 0.5rem; }
+
+/* ===== CV ===== */
+.cv-section {
+    background: linear-gradient(90deg, #f4f4f4 0%, #fff 30%, #fff 70%, #f4f4f4 100%);
+    text-align: center;
+    padding: 60px 20px;
+}
+.cv-section a {
+    padding: 10px 14px;
+    border-radius: 5px;
+    background: #d1d1d1;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+}
+.cv-image {
+    width: 80%;
+    height: auto;
+    max-width: 1000px;
+    display: block;         /* centrera via auto-marginaler */
+    margin: 0 auto;         /* <-- mitten */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+
+/* ===== BREAKPOINTS ===== */
+@media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 24px 16px 8px; }
+    .hero-content { max-width: 640px; text-align: center; margin: 0 auto; }
+    .hero-right { background: linear-gradient(180deg, #535353 0%, #323232 100%); padding: 24px 0 40px; }
+    .hero-right img { width: clamp(200px, 48vw, 280px); height: clamp(200px, 48vw, 280px); }
+
+    /* ikon- & språksektion: tätare och lite smalare tiles */
+    .icons-grid, .icons-grid--compact, .languages-grid { gap: 12px; }
+    .icons-grid > *, .icons-grid--compact > *, .languages-grid > * { flex-basis: clamp(120px, 28vw, 160px); }
+}
+
+@media (max-width: 600px) {
+
+    .navbar { display: none; } /* dölj navbar helt på mobil */
+    .hero-left { padding: 16px; }
+    .hero-content h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+    .hero-content p { font-size: clamp(1rem, 3.8vw, 1.1rem); }
+    .social-links { justify-content: center; }
+
+    /* Hero fyller hela viewportens höjd på iOS/Android */
+    .hero {
+        margin-top: 0;                 /* ingen offset på mobil */
+        grid-template-columns: 1fr;    /* en kolumn */
+        min-height: 100vh;             /* fallback */
+        height: 100svh;                /* iOS 16+ “small viewport” */
+        height: 100dvh;                /* modern enhetlig viewport */
+        display: grid;
+    }
+
+    /* Ta bort sneda kanten på mobil */
+    .hero-right {
+        clip-path: none;
+        -webkit-clip-path: none;
+        background: linear-gradient(180deg, #535353 0%, #323232 100%);
+    }
+
+    /* 2 kolumner känsla men centrerat */
+    .icons-wrap, .languages-wrap { width: 96vw; }
+    .icons-grid, .icons-grid--compact, .languages-grid { gap: 10px; }
+    .icons-grid > *, .icons-grid--compact > *, .languages-grid > * { flex-basis: clamp(120px, 42vw, 160px); }
+
+    .cv-image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-content h1 { font-size: 1.8rem; }
+    .nav-links a { font-size: .95rem; }
+    .icons-grid, .icons-grid--compact, .languages-grid { gap: 8px; }
+}
