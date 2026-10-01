@@ -1,0 +1,125 @@
+// All project content lives here. Replace the placeholders; the UI reads only this file.
+//
+// - categories: order = order of the small cards, and the order arrows walk through them.
+// - projects:   order inside a category = browse order. `art` (0-5) only picks a placeholder
+//               gradient until you add `image: '/assets/projects/<file>'`.
+// - featuredOrder: ids in the order you are proudest of them. The first two become the big cards,
+//               and the arrows walk this whole list when a big card was opened.
+
+export const categories = [
+  { id: 'web', name: 'Websites', blurb: 'Sites built from scratch' },
+  { id: 'apps', name: 'Apps', blurb: 'Things you install and use' },
+  { id: 'design', name: 'Design', blurb: 'Visual and interface work' },
+  { id: 'lab', name: 'Lab', blurb: 'School work and experiments' },
+]
+
+export const projects = [
+  {
+    id: 'placeholder-web-1',
+    category: 'web',
+    art: 0,
+    title: 'Project title',
+    tagline: 'One sentence about what it is.',
+    description:
+      'Replace this with the story: the problem, how you approached it and what came out of it. Two or three short paragraphs is plenty.',
+    role: 'Design & development',
+    year: '2026',
+    tags: ['React', 'Vite', 'GSAP'],
+    links: [{ label: 'Live site', href: '#' }],
+  },
+  {
+    id: 'placeholder-web-2',
+    category: 'web',
+    art: 1,
+    title: 'Second website',
+    tagline: 'Another one-liner.',
+    description: 'Placeholder description for the second website project.',
+    role: 'Development',
+    year: '2025',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    links: [{ label: 'Source', href: '#' }],
+  },
+  {
+    id: 'placeholder-app-1',
+    category: 'apps',
+    art: 2,
+    title: 'App project',
+    tagline: 'What the app does in a sentence.',
+    description: 'Placeholder description for an app project.',
+    role: 'Solo project',
+    year: '2026',
+    tags: ['Java', 'SQL'],
+    links: [{ label: 'Source', href: '#' }],
+  },
+  {
+    id: 'placeholder-app-2',
+    category: 'apps',
+    art: 3,
+    title: 'Another app',
+    tagline: 'Short and to the point.',
+    description: 'Placeholder description for another app project.',
+    role: 'Team of three',
+    year: '2025',
+    tags: ['Python'],
+    links: [],
+  },
+  {
+    id: 'placeholder-design-1',
+    category: 'design',
+    art: 4,
+    title: 'Design project',
+    tagline: 'A visual or interface design piece.',
+    description: 'Placeholder description for a design project.',
+    role: 'Design',
+    year: '2025',
+    tags: ['Figma', 'Affinity'],
+    links: [{ label: 'Case study', href: '#' }],
+  },
+  {
+    id: 'placeholder-design-2',
+    category: 'design',
+    art: 5,
+    title: 'Second design',
+    tagline: 'Branding, poster or UI kit.',
+    description: 'Placeholder description for a second design project.',
+    role: 'Design',
+    year: '2024',
+    tags: ['Photoshop'],
+    links: [],
+  },
+  {
+    id: 'placeholder-lab-1',
+    category: 'lab',
+    art: 1,
+    title: 'School project',
+    tagline: 'Course work worth showing.',
+    description: 'Placeholder description for a school project.',
+    role: 'Student project',
+    year: '2024',
+    tags: ['C'],
+    links: [],
+  },
+  {
+    id: 'placeholder-lab-2',
+    category: 'lab',
+    art: 3,
+    title: 'Experiment',
+    tagline: 'Something built to learn.',
+    description: 'Placeholder description for an experiment.',
+    role: 'Personal',
+    year: '2024',
+    tags: ['WebGL'],
+    links: [{ label: 'Source', href: '#' }],
+  },
+]
+
+export const featuredOrder = [
+  'placeholder-web-1',
+  'placeholder-app-1',
+  'placeholder-design-1',
+  'placeholder-web-2',
+  'placeholder-app-2',
+  'placeholder-design-2',
+  'placeholder-lab-1',
+  'placeholder-lab-2',
+]
