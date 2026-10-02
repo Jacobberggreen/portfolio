@@ -10,8 +10,8 @@ export const LAYOUT = {
 }
 
 export const SKY = {
-  top: 0.15, // zenith charcoal
-  glow: 0.2, // extra brightness of the horizon glow at its centre
+  top: 0.20, // zenith charcoal
+  glow: 0.26, // extra brightness of the horizon glow at its centre
   glowX: [0.5, 0.5], // glow centre across the width (portrait, landscape)
   glowWidth: 0.55, // horizontal falloff of the glow (fraction of width)
   glowRise: 0.3, // vertical extent of the glow (fraction of viewport height)
@@ -19,7 +19,7 @@ export const SKY = {
   tint: [185, 196, 217], // cool colour (#b9c4d9) the glow and its reflection lean toward
   tintAmount: 0.75, // how strongly (1 = the glow centre takes the full tint ratio)
   tintWater: 1.75, // extra tint in the reflection (it is dim, so the ratio has to be pushed harder to show)
-  mountain: 0.09,
+  mountain: 0.12,
   mountainHaze: 0.02, // extra haze at the mountain foot
 }
 
@@ -27,20 +27,20 @@ export const SKY = {
 // the one with the summit). lum = luminance at the crest; mist = how much
 // lighter the range gets with depth below its crest (haze between the ranges). Shapes live in ridge.js.
 export const MOUNTAINS = [
-  { lum: 0.19, mist: 0.4 },
-  { lum: 0.165, mist: 0.36 },
-  { lum: 0.13, mist: 0.17 },
-  { lum: 0.095, mist: 0.22 },
-  { lum: 0.065, mist: 0.06 },
+  { lum: 0.23, mist: 0.4 },
+  { lum: 0.205, mist: 0.36 },
+  { lum: 0.17, mist: 0.17 },
+  { lum: 0.13, mist: 0.22 },
+  { lum: 0.09, mist: 0.06 },
 ]
 
 export const WATER = {
   speed: 0.5, // time scale of the wave field (1 = real deep-water dispersion)
   camHeight: 2.4, // metres above the water; larger = fatter bands far away
   steepness: 0.15, // wave slope: more = stronger glints and contrast
-  reflect: 0.75, // overall reflectance multiplier (exposure of the water)
+  reflect: 0.9, // overall reflectance multiplier (exposure of the water)
   near: 0.065, // extra light caught by the water closest to the camera
-  base: 0.03, // light scattered in the water itself
+  base: 0.04, // light scattered in the water itself
   mist: 0.008, // luminous mist right under the horizon
   fade: 1.15, // distance below the horizon (viewport heights) where it reaches black
   calm: [0.03, 0.17, 0.4], // far water: ripples fade in between these distances (viewport heights below the horizon); the 3rd value is how much motion survives right at the horizon (0 = glass)

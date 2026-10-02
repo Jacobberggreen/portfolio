@@ -52,7 +52,7 @@ export function renderStatic2D(ctx, { width, height, scale, horizon, focal, scen
         const cov = Math.max(0, Math.min(1, 0.5 + (ridgeBlur(px) - dy) / (2 * blur)))
         const refl = skyL(xn, y, glowX) * (1 - cov) + mountainL(y) * cov
         const fres = 0.02 + 0.98 * (1 - Math.sin(a)) ** 5
-        gT = SKY.tintWater * glowW(xn, y, glowX) * (1 - cov)
+        gT = SKY.tintWater * glowW(xn, y, glowX)
         L = WATER.reflect * fres * refl + WATER.base * Math.exp(-y / 0.12) + WATER.mist * Math.exp(-y / 0.012)
         const s = Math.max(0, Math.min(1, (y - 0.05) / (WATER.fade - 0.05)))
         L *= 1 - s * s * (3 - 2 * s)

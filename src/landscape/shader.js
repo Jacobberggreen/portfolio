@@ -291,7 +291,7 @@ ${waveCalls}
   float rh = 0.72 * uRidge.w; // mean range height: keeps the reflection symmetric about the centre
   float cov = clamp(0.5 + (rh - hyR) / (2.0 * blur), 0.0, 1.0);
   float refl = mix(skyL(xR, hyR), mountainL(hyR), cov);
-  gT = ${f(SKY.tintWater)} * glowW(xR, hyR) * (1.0 - cov) * uMirror;
+  gT = ${f(SKY.tintWater)} * glowW(xR, hyR) * uMirror;
 
   float cosT = clamp(dot(-d, n), 0.0, 1.0);
   float fres = 0.02 + 0.98 * pow(1.0 - cosT, 5.0);
